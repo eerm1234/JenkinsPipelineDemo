@@ -1,29 +1,10 @@
 pipeline {
     agent any
+
     stages {
-        stage('Hello World') {
+        stage('Submit Stack') {
             steps {
-                echo "Hello world"
-            }
-        }
-        stage('Build') {
-            steps {
-                echo "Building"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo "Deployment"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo "Testing"
-            }
-        }
-        stage ('Release')  {
-            steps {
-                echo "Releasing"
+            sh "aws cloudformation deploy --template-file /home/eero/Documents/JenkinsEC2.yaml --stack-name my-new-stack"
             }
         }
     }
